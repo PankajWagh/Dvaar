@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { APP_INITIALIZER, COMPILER_OPTIONS, NgModule } from '@angular/core';
+import { APP_INITIALIZER, COMPILER_OPTIONS, NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouteReuseStrategy } from '@angular/router';
@@ -75,5 +75,6 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
         },
     ],
     bootstrap: [AppComponent],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

@@ -19,7 +19,7 @@ import { CoreNavigator } from '@services/navigator';
 import { CoreSites } from '@services/sites';
 import { CoreDomUtils } from '@services/utils/dom';
 import { CoreEventObserver, CoreEvents } from '@singletons/events';
-import { CoreCourseBasicSearchedData, CoreCourses, CoreCoursesProvider } from '../../services/courses';
+import { CoreCourseBasicSearchedData, CoreCourses, CoreCoursesProvider,CoreCategoryData } from '../../services/courses';
 
 type CoreCoursesListMode = 'search' | 'all' | 'my';
 
@@ -43,11 +43,14 @@ export class CoreCoursesListPage implements OnInit, OnDestroy {
     downloadCoursesEnabled = false;
 
     courses: (CoreCourseBasicSearchedData|CoreEnrolledCourseDataWithExtraInfo)[] = [];
+    categoriescourses: any = [];
+    categoriesshowhide: any = [];
+	categories: any  = [];
     loaded = false;
     coursesLoaded = 0;
     canLoadMore = false;
     loadMoreError = false;
-
+	isShown: boolean = false ; // hidden by default
     showOnlyEnrolled = false;
 
     protected loadedCourses: (CoreCourseBasicSearchedData|CoreEnrolledCourseDataWithExtraInfo)[] = [];
@@ -60,6 +63,7 @@ export class CoreCoursesListPage implements OnInit, OnDestroy {
     protected siteUpdatedObserver: CoreEventObserver;
     protected downloadEnabledObserver: CoreEventObserver;
     protected courseIds = '';
+    public courseCategoriesIds: any = [];
     protected isDestroyed = false;
 
     constructor() {
@@ -97,7 +101,11 @@ export class CoreCoursesListPage implements OnInit, OnDestroy {
             this.downloadEnabled = (this.downloadCourseEnabled || this.downloadCoursesEnabled) && data.enabled;
         });
     }
-
+	toggleShow(id) {
+		let val  = this.courseCategoriesIds[id];
+		this.categoriesshowhide[val]= !(this.categoriesshowhide[val]);
+		
+	}
     /**
      * @inheritdoc
      */
@@ -109,7 +117,8 @@ export class CoreCoursesListPage implements OnInit, OnDestroy {
             (this.downloadCourseEnabled || this.downloadCoursesEnabled) && CoreCourses.getCourseDownloadOptionsEnabled();
 
         const mode = CoreNavigator.getRouteParam<CoreCoursesListMode>('mode') || 'my';
-
+		this.showOnlyEnrolled =true;
+		console.log(mode);
         if (mode == 'search') {
             this.searchMode = true;
         }
@@ -173,7 +182,28 @@ export class CoreCoursesListPage implements OnInit, OnDestroy {
             this.courses = this.courses.concat(addCourses);
 
             this.courseIds = this.courses.map((course) => course.id).join(',');
-
+			console.log(this.searchText);
+			
+			this.courseCategoriesIds=this.courses.map((course) => course.categoryid);
+			this.courseCategoriesIds= this.courseCategoriesIds.filter((v, i, a) => a.indexOf(v) === i);
+			console.log(this.courseCategoriesIds);
+			for(var course of this.courses)
+			{
+				console.log(course);
+				if(course.categoryid != undefined)
+				{
+					this.categories[course.categoryid]=course.categoryname;
+					this.categoriesshowhide[course.categoryid]=false;
+					if(this.categoriescourses[course.categoryid] == undefined)
+					{
+						this.categoriescourses[course.categoryid]=[];
+					}
+					this.categoriescourses[course.categoryid].push(course);
+				}
+				
+			}
+			
+		
             this.coursesLoaded = this.courses.length;
             this.canLoadMore = this.loadedCourses.length > this.courses.length;
         } catch (error) {
@@ -276,7 +306,31 @@ export class CoreCoursesListPage implements OnInit, OnDestroy {
                 this.courses = this.courses.concat(response.courses);
             }
             this.searchTotal = response.total;
-
+			
+			this.courseCategoriesIds=this.courses.map((course) => course.categoryid);
+			this.courseCategoriesIds= this.courseCategoriesIds.filter((v, i, a) => a.indexOf(v) === i);
+			//console.log(this.courseCategoriesIds);
+			this.categories=[];
+			this.categoriesshowhide=[];
+			this.categoriescourses=[];
+			for(var course of this.courses)
+			{
+				if(course.categoryid != undefined)
+				{
+					this.categories[course.categoryid]=course.categoryname;
+					this.categoriesshowhide[course.categoryid]=false;
+					if(this.categoriescourses[course.categoryid] == undefined)
+					{
+						this.categoriescourses[course.categoryid]=[];
+					}
+					this.categoriescourses[course.categoryid].push(course);
+				}
+				
+			}
+			if(this.searchText !='')
+			{
+				 this.searchTotal = response.total;
+			}
             this.searchPage++;
             this.canLoadMore = this.courses.length < this.searchTotal;
         } catch (error) {

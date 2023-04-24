@@ -41,7 +41,7 @@ import { CorePath } from '@singletons/path';
 import { CorePromisedValue } from '@classes/promised-value';
 import { CorePlatform } from '@services/platform';
 
-const ENROL_BROWSER_METHODS = ['fee', 'paypal'];
+const ENROL_BROWSER_METHODS = ['fee', 'paypal','license'];
 
 /**
  * Page that shows the summary of a course including buttons to enrol and other available options.

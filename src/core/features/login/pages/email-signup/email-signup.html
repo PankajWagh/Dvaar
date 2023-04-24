@@ -84,7 +84,7 @@
                             <p *ngIf="siteName" class="ion-padding item-heading">
                                 <core-format-text [text]="siteName" [filter]="false"></core-format-text>
                             </p>
-                            <p *ngIf="siteName">{{siteUrl}}</p>
+						<!-- <p *ngIf="siteName">{{siteUrl}}</p> -->
                         </ion-label>
                     </ion-item>
 
@@ -159,8 +159,9 @@
                         </ion-input>
                     </ion-item>
                     <ion-item class="ion-text-wrap">
-                        <ion-label position="stacked">{{ 'core.user.country' | translate }}</ion-label>
-                        <ion-select name="country" formControlName="country" [placeholder]="'core.login.selectacountry' | translate">
+                        <ion-label position="stacked" id="core-login-signup-country">{{ 'core.user.country' | translate }}</ion-label>
+                        <ion-select name="country" formControlName="country" aria-labelledby="core-login-signup-country"
+                            [placeholder]="'core.login.selectacountry' | translate">
 
                             <ion-select-option value="">{{ 'core.login.selectacountry' | translate }}</ion-select-option>
                             <ion-select-option *ngFor="let country of countries" [value]="country.code">{{country.name}}</ion-select-option>

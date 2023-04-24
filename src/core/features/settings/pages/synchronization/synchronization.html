@@ -52,7 +52,7 @@
                 </ion-item-divider>
 
                 <ion-card *ngIf="accountsList.currentSite">
-                    <ion-item-divider sticky="true" class="core-sitelist-sitename">
+                    <!-- <ion-item-divider sticky="true" class="core-sitelist-sitename">
                         <ion-label>
                             <p class="item-heading">
                                 <core-format-text [text]="accountsList.currentSite.siteName" clean="true"
@@ -62,7 +62,7 @@
                                     accountsList.currentSite.siteUrlWithoutProtocol }}</a>
                             </p>
                         </ion-label>
-                    </ion-item-divider>
+                    </ion-item-divider> -->
 
                     <ion-item class="item-current">
                         <ng-container *ngTemplateOutlet="siteSync; context: {site: accountsList.currentSite}"></ng-container>

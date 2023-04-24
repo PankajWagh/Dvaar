@@ -6,9 +6,9 @@
             </ion-button>
         </ion-buttons>
 
-        <ion-title>
+        <!-- <ion-title>
             <h1>{{ 'core.mainmenu.switchaccount' | translate }}</h1>
-        </ion-title>
+        </ion-title> -->
 
         <ion-buttons slot="end">
             <ion-button fill="clear" *ngIf="accountsList.count > 1" (click)="toggleDelete()"
@@ -24,13 +24,13 @@
             <ion-card *ngIf="accountsList.currentSite">
                 <ion-item-divider sticky="true" class="core-sitelist-sitename">
                     <ion-label>
-                        <h2>
+                        <!--    <h2>
                             <core-format-text [text]="accountsList.currentSite.siteName" clean="true"
                                 [siteId]="accountsList.currentSite.id"></core-format-text>
                         </h2>
                         <p><a [href]="accountsList.currentSite.siteUrl" core-link autoLogin="yes">{{
                                 accountsList.currentSite.siteUrlWithoutProtocol }}</a>
-                        </p>
+                        </p> -->
                     </ion-label>
                 </ion-item-divider>
 
@@ -55,7 +55,7 @@
                         <h2>
                             <core-format-text [text]="sites[0].siteName" clean="true" [siteId]="sites[0].id"></core-format-text>
                         </h2>
-                        <p><a [href]="sites[0].siteUrl" core-link autoLogin="no">{{ sites[0].siteUrlWithoutProtocol }}</a></p>
+                        <!-- <p><a [href]="sites[0].siteUrl" core-link autoLogin="no">{{ sites[0].siteUrlWithoutProtocol }}</a></p> -->
                     </ion-label>
                 </ion-item-divider>
 
@@ -64,12 +64,12 @@
 
         </ion-list>
     </core-loading>
-    <ion-fab slot="fixed" core-fab vertical="bottom" horizontal="end">
+    <!-- <ion-fab slot="fixed" core-fab vertical="bottom" horizontal="end">
         <ion-fab-button (click)="add($event)" [attr.aria-label]="'core.login.add' | translate">
             <ion-icon name="fas-plus" aria-hidden="true"></ion-icon>
             <span class="sr-only">{{ 'core.login.add' | translate }}</span>
         </ion-fab-button>
-    </ion-fab>
+    </ion-fab> -->
 </ion-content>
 
 <!-- Template to render a list of sites. -->

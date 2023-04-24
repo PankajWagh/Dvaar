@@ -2,7 +2,8 @@
     [class.core-course-list-card]="layout == 'card' || layout == 'summarycard'" [class.item-dimmed]="course.hidden" (click)="openCourse()"
     button [attr.aria-label]="course.displayname || course.fullname">
 
-    <div *ngIf="layout == 'card' || layout == 'summarycard'" class="core-course-thumb" [class.core-course-color-img]="course.courseImage">
+    <div *ngIf="layout == 'card' || layout == 'summarycard'" (click)="openCourse()" class="core-course-thumb"
+        [class.core-course-color-img]="course.courseImage">
         <img *ngIf="course.courseImage" [src]="course.courseImage" core-external-content alt="" />
         <ion-icon *ngIf="!course.courseImage" name="fas-graduation-cap" class="course-icon" aria-hidden="true">
         </ion-icon>
@@ -27,7 +28,7 @@
         </div>
     </ng-container>
 
-    <ion-item class="ion-text-wrap">
+    <ion-item class="ion-text-wrap" button detail="false" (click)="openCourse()" [attr.aria-label]="course.displayname || course.fullname">
 
         <ng-container *ngIf="layout == 'list' || layout == 'listwithenrol'">
             <ion-icon *ngIf="!course.courseImage" name="fas-graduation-cap" slot="start" class="course-icon core-course-thumb"
@@ -74,19 +75,19 @@
                     </ion-label>
                 </ion-chip>
 
-                <ion-chip color="info" *ngIf="course.visible == 0"
+               <!-- <ion-chip color="info" *ngIf="course.visible == 0"
                     class="core-course-additional-info ion-text-wrap core-course-hidden-message">
                     <ion-label>
                         {{ 'core.course.hiddenfromstudents' | translate }}
                     </ion-label>
-                </ion-chip>
+                </ion-chip> -->
             </div>
 
-            <div *ngIf="layout != 'summarycard' && isEnrolled && progress >= 0 && completionUserTracked !== false"
+           
+        </ion-label>
+    </ion-item>
+	 <div *ngIf="layout != 'summarycard' && isEnrolled && progress >= 0 && completionUserTracked !== false"
                 class="core-course-progress">
                 <core-progress-bar [progress]="progress" a11yText="core.courses.aria:courseprogress"></core-progress-bar>
             </div>
-        </ion-label>
-    </ion-item>
-
 </ion-card>
