@@ -1,8 +1,8 @@
 {
-    "app_id": "com.dvaar.mobile",
-    "appname": "Dvaar",
-    "versioncode": 41100,
-    "versionname": "4.1.1",
+    "app_id": "com.dvaarapp.mobile",
+    "appname": "Dvaar Mobile App",
+    "versioncode": 10005,
+    "versionname": "1.0.005",
     "cache_update_frequency_usually": 420000,
     "cache_update_frequency_often": 1200000,
     "cache_update_frequency_sometimes": 3600000,
@@ -16,16 +16,7 @@
     },
     "wsservice": "moodle_mobile_app",
     "demo_sites": {
-        "student": {
-            "url": "https://school.moodledemo.net",
-            "username": "student",
-            "password": "moodle"
-        },
-        "teacher": {
-            "url": "https://school.moodledemo.net",
-            "username": "teacher",
-            "password": "moodle"
-        }
+      
     },
     "defaultZoomLevel": "none",
     "zoomlevels": {
@@ -49,7 +40,7 @@
     "forceLoginLogo": true,
     "ioswebviewscheme": "moodleappfs",
     "appstores": {
-        "android": "com.moodle.moodlemobile",
+        "android": "com.dvaarapp.mobile",
         "ios": ""
     },
     "wsrequestqueuelimit": 10,
