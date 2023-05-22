@@ -54,6 +54,7 @@
     <preference name="GradlePluginGoogleServicesVersion" value="4.3.10" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="AndroidLaunchMode" value="singleTask" />
+
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
@@ -212,6 +213,7 @@
         </config-file>
     </platform>
     <platform name="ios">
+		<preference name="SwiftVersion" value="5" />
         <resource-file src="GoogleService-Info.plist" />
         <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
             <string>We need your location so you can attach it as part of your submissions.</string>
