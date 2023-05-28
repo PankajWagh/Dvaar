@@ -1716,6 +1716,9 @@ export type CoreCategoryData = {
     parent: number; // Parent category id.
     sortorder: number; // Category sorting order.
     coursecount: number; // Number of courses in this category.
+    coursescount: number; // Number of courses in this category.
+    categoriescount: number; // Number of courses in this category.
+    image: string;
     visible?: number; // 1: available, 0:not available.
     visibleold?: number; // 1: available, 0:not available.
     timemodified?: number; // Timestamp.

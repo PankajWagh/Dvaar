@@ -107,6 +107,8 @@ export class CoreCoursesCategoriesPage implements OnInit, OnDestroy {
         try {
             const categories: CoreCategoryData[] = await CoreCourses.getCategories(this.categoryId, true);
 
+            console.log(categories);
+
             this.currentCategory = undefined;
 
             const index = categories.findIndex((category) => category.id == this.categoryId);
@@ -133,6 +135,8 @@ export class CoreCoursesCategoriesPage implements OnInit, OnDestroy {
 
                 try {
                     this.categoryCourses = await CoreCourses.getCoursesByField('category', this.categoryId);
+                    console.log(this.categoryCourses);
+                    console.log(this.currentCategory);
                     await this.filterEnrolled();
                 } catch (error) {
                     !this.isDestroyed && CoreDomUtils.showErrorModalDefault(error, 'core.courses.errorloadcourses', true);

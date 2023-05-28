@@ -27,7 +27,11 @@
     <core-loading [hideUntil]="categoriesLoaded">
         <ion-list class="list-item-limited-width">
             <ion-item *ngIf="currentCategory" class="ion-text-wrap">
-                <ion-icon name="fas-folder" slot="start" [attr.aria-label]="'core.category' | translate"></ion-icon>
+                <ion-thumbnail slot="start"><img *ngIf="currentCategory.image" [src]="currentCategory.image" core-external-content
+                        [alt]="currentCategory.name" /></ion-thumbnail>
+
+
+
                 <ion-label>
                     <p class="item-heading">
                         <core-format-text [text]="currentCategory.name" contextLevel="coursecat" [contextInstanceId]="currentCategory.id">
@@ -37,6 +41,7 @@
                         <core-format-text [text]="currentCategory.description" collapsible-item contextLevel="coursecat"
                             [contextInstanceId]="currentCategory.id"></core-format-text>
                     </p>
+                    <p>Categories:{{currentCategory.categoriescount}} Courses:{{currentCategory.coursescount}} </p>
                 </ion-label>
             </ion-item>
 
@@ -47,19 +52,50 @@
                     </ion-label>
                 </ion-item-divider>
                 <ion-card *ngFor="let category of categories">
-                    <ion-item button class="ion-text-wrap" (click)="openCategory(category.id)" [attr.aria-label]="category.name"
-                        detail="true" *ngIf="category.coursecount > 0">
-                        <ion-icon name="fas-folder" slot="start" [attr.aria-label]="'core.category' | translate"></ion-icon>
+                    <!-- <ion-item button class="ion-text-wrap" (click)="openCategory(category.id)" [attr.aria-label]="category.name"
+                        detail="true">
+                        <ion-icon name="fas-folder" slot="start" [attr.aria-label]="'core.category' | translate"
+                            *ngIf="category.image === ''"></ion-icon>
+
+                        <ion-avatar *ngIf="category.image" slot="start">
+                            <img *ngIf="category.image" [src]="category.image" core-external-content [alt]="category.name" />
+                        </ion-avatar>
+
+
                         <ion-label>
                             <p class="item-heading">
                                 <core-format-text [text]="category.name" contextLevel="coursecat" [contextInstanceId]="category.id">
                                 </core-format-text>
                             </p>
+                            <p *ngIf="category.description">
+                                <core-format-text [text]="category.description" collapsible-item contextLevel="coursecat"
+                                    [contextInstanceId]="category.id"></core-format-text>
+                            </p>
                         </ion-label>
-                        <ion-badge slot="end" *ngIf="!showOnlyEnrolled && category.coursecount > 0" color="light">
-                            <span aria-hidden="true">{{ category.coursecount }}</span>
-                            <span class="sr-only">{{ 'core.courses.therearecourses' | translate:{ $a: category.coursecount } }}</span>
+
+                        <ion-badge slot="end" *ngIf="!showOnlyEnrolled && category.categoriescount > 0" color="light">
+                            <span aria-hidden="true">{{ category.coursescount }}</span>
+                            <span class="sr-only">{{category.coursescount } }</span>
+                            <span aria-hidden="true">{{ category.categoriescount }}</span>
+                            <span class="sr-only">{{category.categoriescount } }</span>
                         </ion-badge>
+                    </ion-item> -->
+
+                    <ion-item button class="ion-text-wrap" (click)="openCategory(category.id)" [attr.aria-label]="category.name"
+                        detail="true">
+                        <ion-thumbnail slot="start"><img *ngIf="category.image" [src]="category.image" core-external-content
+                                [alt]="category.name" /></ion-thumbnail>
+
+
+                        <ion-card-content>
+                            <ion-card-title>{{category.name}}</ion-card-title>
+                            <ion-card-subtitle>Categories:{{category.categoriescount}} Courses:{{category.coursescount}}
+                            </ion-card-subtitle>
+                            <p *ngIf="category.description">
+                                <core-format-text [text]="category.description" collapsible-item contextLevel="coursecat"
+                                    [contextInstanceId]="category.id"></core-format-text>
+                            </p>
+                        </ion-card-content>
                     </ion-item>
                 </ion-card>
             </ng-container>
