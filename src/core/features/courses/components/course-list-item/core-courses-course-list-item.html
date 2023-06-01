@@ -65,17 +65,21 @@
                     <ion-icon *ngIf="prefetchCourseData.downloadSucceeded" class="core-icon-downloaded" name="fam-cloud-done"
                         color="success" role="status" [attr.aria-label]="'core.downloaded' | translate"></ion-icon>
                 </p>
+                <p *ngIf="course.summary">
+                    <core-format-text [text]="course.summary" collapsible-item contextLevel="course"
+                        [contextInstanceId]="course.id"></core-format-text>
+                </p>
 
-                <ion-chip color="primary" *ngIf="course.categoryname"
+                <!-- <ion-chip color="primary" *ngIf="course.categoryname"
                     class="core-course-category core-course-additional-info ion-text-nowrap">
                     <span class="sr-only">{{ 'core.courses.aria:coursecategory' | translate }}</span>
                     <ion-label>
                         <core-format-text [text]="course.categoryname" contextLevel="coursecat" [contextInstanceId]="course.categoryid">
                         </core-format-text>
                     </ion-label>
-                </ion-chip>
+                </ion-chip> -->
 
-               <!-- <ion-chip color="info" *ngIf="course.visible == 0"
+                <!-- <ion-chip color="info" *ngIf="course.visible == 0"
                     class="core-course-additional-info ion-text-wrap core-course-hidden-message">
                     <ion-label>
                         {{ 'core.course.hiddenfromstudents' | translate }}
@@ -83,11 +87,10 @@
                 </ion-chip> -->
             </div>
 
-           
+
         </ion-label>
     </ion-item>
-	 <div *ngIf="layout != 'summarycard' && isEnrolled && progress >= 0 && completionUserTracked !== false"
-                class="core-course-progress">
-                <core-progress-bar [progress]="progress" a11yText="core.courses.aria:courseprogress"></core-progress-bar>
-            </div>
+    <div *ngIf="layout != 'summarycard' && isEnrolled && progress >= 0 && completionUserTracked !== false" class="core-course-progress">
+        <core-progress-bar [progress]="progress" a11yText="core.courses.aria:courseprogress"></core-progress-bar>
+    </div>
 </ion-card>

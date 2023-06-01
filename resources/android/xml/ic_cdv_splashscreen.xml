@@ -3,6 +3,11 @@
     android:viewportHeight="512"
     android:width="512dp"
     android:height="512dp">
+    <group
+        android:pivotX="243"
+        android:pivotY="256"
+        android:scaleX="0.5"
+        android:scaleY="0.5">
     <path
         android:pathData="M165.5 51L258.5 87L336.5 53L349.5 51L357 56.5L359 67.5L353.5 75L255.5 116L157 70.5L156 59.5L162.5 52L165.5 51ZM168 54L165 55L159 63L160 69L253 112L352 72L355 68L354 59L347 54L260 90L173 55L171 55L168 54Z"
         android:fillColor="#FFE7D7"
@@ -1636,4 +1641,5 @@
         android:fillColor="#FF6D00"
         android:strokeColor="#FF6D00"
         android:strokeWidth="2" />
+    </group>
 </vector>
