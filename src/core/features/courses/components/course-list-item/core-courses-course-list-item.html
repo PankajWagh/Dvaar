@@ -34,9 +34,9 @@
             <ion-icon *ngIf="!course.courseImage" name="fas-graduation-cap" slot="start" class="course-icon core-course-thumb"
                 aria-hidden="true">
             </ion-icon>
-            <ion-avatar *ngIf="course.courseImage" slot="start" class="core-course-thumb">
+            <ion-thumbnail *ngIf="course.courseImage" slot="start" class="avatar-top core-course-thumb">
                 <img [src]="course.courseImage" core-external-content alt="" />
-            </ion-avatar>
+            </ion-thumbnail>
         </ng-container>
 
         <ion-label>

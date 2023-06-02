@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="10006" id="com.dvaarapp.mobile" ios-CFBundleVersion="1.0.006" version="1.0.006" versionCode="10005" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Dvaar Mobile App</name>
-    <description>Dvaar Mobile  app</description>
+<widget android-versionCode="10008" id="com.dvaarapp.mobile" ios-CFBundleVersion="1.0.008" version="1.0.008" versionCode="10008" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Dvaar</name>
+    <description>Dvaar</description>
     <author email="navin@skillheads.in" href="http://skillheads.in">Ducis Mobile team</author>
     <content src="index.html" />
     <access origin="*" />
@@ -27,7 +27,7 @@
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="prerendered-icon" value="true" />
-    <preference name="AppendUserAgent" value="Dvaar Mobile App 1.0.006 (10006)" />
+    <preference name="AppendUserAgent" value="Dvaar 1.0.008 (10008)" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="KeyboardDisplayRequiresUserAction" value="false" />
@@ -59,7 +59,7 @@
     </feature>
     <platform name="android">
         <preference name="AndroidGradlePluginVersion" value="7.2.2" />
-        <resource-file src="resources/android/xml/ic_cdv_splashscreen.xml" target="app/src/main/res/xml/ic_cdv_splashscreen.xml" />
+        <resource-file src="resources/android/xml/ic_cdv_splashscreen.xml" target="app/src/main/res/drawable/ic_cdv_splashscreen.xml" />
         <resource-file src="MainActivity.java" target="app/src/main/java/com/dvaarapp/mobile/MainActivity.java" />
         <resource-file src="google-services.json" target="app/google-services.json" />
         <resource-file src="resources/android/xml/network_security_config.xml" target="app/src/main/res/xml/network_security_config.xml" />

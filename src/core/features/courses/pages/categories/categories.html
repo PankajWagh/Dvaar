@@ -29,16 +29,16 @@
             <ion-item *ngIf="currentCategory" class="ion-text-wrap">
                 
 				
-				<ion-avatar *ngIf="currentCategory.image" slot="start" class="core-course-thumb">
+				<ion-thumbnail *ngIf="currentCategory.image" slot="start" class="core-course-thumb">
 					<img [src]="currentCategory.image" core-external-content alt="" />
-				</ion-avatar>
+				</ion-thumbnail>
 
                 <ion-label>
                     <p class="item-heading">
                         <core-format-text [text]="currentCategory.name" contextLevel="coursecat" [contextInstanceId]="currentCategory.id">
                         </core-format-text>
                     </p>
-					<p><ion-badge *ngIf="currentCategory.categoriescount > 0 "><b>Categories: </b>{{currentCategory.categoriescount}} </ion-badge>&nbsp;<ion-badge *ngIf="currentCategory.coursescount > 0 "><b>Courses: </b>{{currentCategory.coursescount}}</ion-badge></p>
+					<p><ion-chip color="dark" *ngIf="currentCategory.categoriescount > 0 "><b>Categories: </b>{{currentCategory.categoriescount}} </ion-chip>&nbsp;<ion-chip color="dark" *ngIf="currentCategory.coursescount > 0 "><b>Courses: </b>{{currentCategory.coursescount}}</ion-chip></p>
                     <p *ngIf="currentCategory.description">
                         <core-format-text [text]="currentCategory.description" collapsible-item contextLevel="coursecat"
                             [contextInstanceId]="currentCategory.id"></core-format-text>
@@ -84,13 +84,13 @@
                     </ion-item> -->
 
                     <ion-item button class="ion-text-wrap" (click)="openCategory(category.id)" [attr.aria-label]="category.name"
-                        detail="true">
-                        <ion-thumbnail slot="start"><img *ngIf="category.image" [src]="category.image" core-external-content
+                        detail="true" *ngIf="(category.categoriescount > 0 ||category.coursescount > 0)  ">
+                        <ion-thumbnail slot="start" class="avatar-top"><img *ngIf="category.image" [src]="category.image" core-external-content
                                 [alt]="category.name" /></ion-thumbnail>
                         <ion-card-content>
                             <ion-card-title>{{category.name}}</ion-card-title>
 							
-                            <ion-card-subtitle><p><ion-badge *ngIf="category.categoriescount > 0 " ><b>Categories: </b>{{category.categoriescount}} </ion-badge>&nbsp;<ion-badge *ngIf="category.coursescount > 0 "><b>Courses: </b>{{category.coursescount}}</ion-badge></p></ion-card-subtitle>
+                            <ion-card-subtitle><p><ion-chip color="dark"  *ngIf="category.categoriescount > 0 " ><b>Categories: </b>{{category.categoriescount}} </ion-chip>&nbsp;<ion-chip color="dark" *ngIf="category.coursescount > 0 "><b>Courses: </b>{{category.coursescount}}</ion-chip></p></ion-card-subtitle>
                             <p *ngIf="category.description">
                                 <core-format-text [text]="category.description" collapsible-item contextLevel="coursecat" [contextInstanceId]="category.id"></core-format-text>
                             </p>

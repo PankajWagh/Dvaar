@@ -19,3 +19,20 @@ html {
 html.dark {
 
 }
+.avatar-top {
+    margin: 16px 16px 8px 0;
+    margin-bottom: auto;
+}
+.item ion-thumbnail {
+    min-width: 4rem;    
+    min-height: 4rem;
+    img {
+        max-width: 4rem;    
+        min-width: 4rem;
+		object-fit: scale-down;
+    }
+}
+ion-card ion-card-title
+{
+	font-size: 15px !important;
+}
