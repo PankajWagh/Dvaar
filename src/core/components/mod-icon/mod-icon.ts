@@ -95,6 +95,9 @@ export class CoreModIconComponent implements OnInit, OnChanges {
     setIcon(): void {
         this.icon = this.modicon || this.icon;
         this.isLocalUrl = this.icon.startsWith(assetsPath);
+		
+		console.log("99******************"+this.icon);
+        this.isLocalUrl = true;
 
         // Cache icon if the url is not the theme generic one.
         // If modname is not set icon won't be cached.
@@ -110,6 +113,8 @@ export class CoreModIconComponent implements OnInit, OnChanges {
      * Icon to load on error.
      */
     loadFallbackIcon(): void {
+	
+		console.log("114******************"+this.modname);
         this.isLocalUrl = true;
         const moduleName = !this.modname || CoreCourse.CORE_MODULES.indexOf(this.modname) < 0
             ? fallbackModName

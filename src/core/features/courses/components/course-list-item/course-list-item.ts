@@ -118,6 +118,10 @@ export class CoreCoursesCourseListItemComponent implements OnInit, OnDestroy, On
                     });
                 }
             });
+			
+			console,log("********************");
+			console.log(this.enrolmentIcons);
+			console.log(this.course.enrollmentmethods);
 
             if (this.enrolmentIcons.length == 0) {
                 this.enrolmentIcons.push({

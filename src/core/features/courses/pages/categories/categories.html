@@ -26,9 +26,7 @@
     </ion-refresher>
     <core-loading [hideUntil]="categoriesLoaded">
         <ion-list class="list-item-limited-width">
-            <ion-item *ngIf="currentCategory" class="ion-text-wrap">
-                
-				
+            <ion-item *ngIf="currentCategory" class="ion-text-wrap"  >		
 				<ion-thumbnail *ngIf="currentCategory.image" slot="start" class="core-course-thumb">
 					<img [src]="currentCategory.image" core-external-content alt="" />
 				</ion-thumbnail>
