@@ -123,6 +123,11 @@ export class CoreCourseSummaryPage implements OnInit, OnDestroy {
 
         const currentSiteUrl = CoreSites.getRequiredCurrentSite().getURL();
         this.enrolUrl = CorePath.concatenatePaths(currentSiteUrl, 'enrol/index.php?id=' + this.courseId);
+		let courseByField = await CoreCourses.getCourseByField('id', this.courseId);
+		if(courseByField.enrollmentmethods.indexOf("license") >= 0)
+		{
+			 this.enrolUrl = "https://ducisgroup.com/index.php/shop-page-dg/";
+		}
         this.courseUrl = CorePath.concatenatePaths(currentSiteUrl, 'course/view.php?id=' + this.courseId);
 
         await this.getCourse();
@@ -190,11 +195,17 @@ export class CoreCourseSummaryPage implements OnInit, OnDestroy {
         this.guestInstanceId.reset();
 
         const enrolmentMethods = await CoreCourses.getCourseEnrolmentMethods(this.courseId);
-
+		console.log("*******************Method***********"+ this.courseId);
+		console.log(enrolmentMethods);
+		
+		
         enrolmentMethods.forEach((method) => {
+		console.log("*******************Method***********"+ method.type);
+
             if (!method.status) {
                 return;
             }
+			
 
             if (method.type === 'self') {
                 this.selfEnrolInstances.push(method);
@@ -205,7 +216,17 @@ export class CoreCourseSummaryPage implements OnInit, OnDestroy {
                 this.otherEnrolments = true;
             }
         });
-
+		 const courseByField = await CoreCourses.getCourseByField('id', this.courseId);	
+		 console.log( courseByField.enrollmentmethods);
+		 
+		 
+		if(courseByField.enrollmentmethods.indexOf("license") >= 0)
+		{
+			 this.otherEnrolments = true;
+		}
+		console.log("*******************otherEnrolments***********"+ this.otherEnrolments);
+		
+		
         if (!this.guestInstanceId.isSettled()) {
             // No guest instance found.
             this.guestInstanceId.resolve(undefined);
@@ -258,11 +279,7 @@ export class CoreCourseSummaryPage implements OnInit, OnDestroy {
                 this.courseData.resolve(courseByField);
             }
 
-            // enrollmentmethods contains ALL enrolment methods including manual.
-            if (!this.isEnrolled && courseByField.enrollmentmethods?.some((method) => ENROL_BROWSER_METHODS.includes(method))) {
-                this.otherEnrolments = true;
-            }
-
+           
         } catch {
             // Ignore errors.
         }
@@ -313,6 +330,8 @@ export class CoreCourseSummaryPage implements OnInit, OnDestroy {
         }
 
         this.waitingForBrowserEnrol = true;
+		
+		console.log("******************"+this.enrolUrl);
 
         await CoreSites.getRequiredCurrentSite().openInBrowserWithAutoLogin(
             this.enrolUrl,
