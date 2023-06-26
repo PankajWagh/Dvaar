@@ -7,6 +7,20 @@
     <ion-refresher slot="fixed" [disabled]="!dataLoaded" (ionRefresh)="doRefresh($event.target)">
         <ion-refresher-content pullingText="{{ 'core.pulltorefresh' | translate }}"></ion-refresher-content>
     </ion-refresher>
+	
+	
+		<ion-item>
+		  <ion-label class="ion-text-center" class="sc-ion-label-md-h sc-ion-label-md-s md hydrated" style="white-space:normal;white-space: normal;border: 1px solid #000;padding: 5px;border-radius: 5px;">
+			<b> Welcome to “DVAAR” your gateway to learning - skilling – practicing! </b>
+			<ul >
+					<li class="ion-text-start">Prepare for an extensive range of professional certifications. </li>
+					<li class="ion-text-start">Prepare yourself for an IT enabled world! Practice coding on the go!. </li>
+					<li class="ion-text-start">Prepare for English language certifications, through extensive tests and learning for CEFR level A1 to C2. </li>
+			</ul>
+
+		  </ion-label>
+		</ion-item>
+
     <core-loading [hideUntil]="dataLoaded">
         <ion-list class="core-course-module-list-wrapper">
             <!-- Site home main contents. -->
@@ -20,6 +34,7 @@
 
                 <core-course-module *ngFor="let module of section.modules" [module]="module" [section]="section"></core-course-module>
             </ng-container>
+		
 
             <!-- Site home items: news, categories, courses, etc. -->
             <ng-container *ngIf="items.length > 0">

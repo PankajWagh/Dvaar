@@ -45,10 +45,10 @@
                             </ion-label>
                         </ion-chip>
                     </ion-label>
-                    <ion-button fill="clear" [href]="courseUrl" core-link [showBrowserWarning]="false"
+                   <!-- <ion-button fill="clear" [href]="courseUrl" core-link [showBrowserWarning]="false"
                         [attr.aria-label]="'core.openinbrowser' | translate" slot="end">
                         <ion-icon name="fas-external-link-alt" slot="icon-only" aria-hidden="true"></ion-icon>
-                    </ion-button>
+                    </ion-button> -->
                 </ion-item>
                 <ion-item class="ion-text-wrap" *ngIf="progress !== undefined || course.startdate || course.enddate">
                     <ion-label>
@@ -138,9 +138,17 @@
                 <ion-label>{{item.data.title | translate }}</ion-label>
             </ion-button>
         </ng-container>
+		
+		<ion-card class="core-info-card ion-text-wrap" *ngIf="otherEnrolments">
+            <ion-item>
+                <ion-icon name="fas-info-circle" slot="start" aria-hidden="true"></ion-icon>
+                <ion-label ><p [innerHTML]="'core.courses.otherenrolments' | translate"></p> </ion-label> 
+            </ion-item>
+        </ion-card>
 
         <ion-button expand="block" (click)="enrolMe()" *ngIf="!isEnrolled && (selfEnrolInstances.length > 0 || otherEnrolments)"
             class="ion-text-wrap">
+			
             {{ 'core.courses.enrolme' | translate }}
         </ion-button>
 

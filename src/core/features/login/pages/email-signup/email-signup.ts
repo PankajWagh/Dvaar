@@ -96,7 +96,7 @@ export class CoreLoginEmailSignupPage implements OnInit {
 
         // Create the signupForm with the basic controls. More controls will be added later.
         this.signupForm = this.fb.group({
-            username: ['', Validators.required],
+        //    username: ['', Validators.required],
             password: ['', Validators.required],
             email: ['', Validators.compose([Validators.required, Validators.email])],
             email2: ['', Validators.compose([Validators.required, Validators.email])],
@@ -288,7 +288,7 @@ export class CoreLoginEmailSignupPage implements OnInit {
         const modal = await CoreDomUtils.showModalLoading('core.sending', true);
 
         const params: SignupUserWSParams = {
-            username: this.signupForm.value.username.trim().toLowerCase(),
+            username: this.signupForm.value.email.trim(),
             password: this.signupForm.value.password,
             firstname: CoreTextUtils.cleanTags(this.signupForm.value.firstname),
             lastname: CoreTextUtils.cleanTags(this.signupForm.value.lastname),
