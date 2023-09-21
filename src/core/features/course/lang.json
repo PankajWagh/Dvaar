@@ -62,4 +62,5 @@
     "viewcourse": "View course",
     "warningmanualcompletionmodified": "The manual completion of an activity was modified on the site.",
     "warningofflinemanualcompletiondeleted": "Some offline manual completion of course '{{name}}' has been deleted. {{error}}"
+	"otherenrolments": "This course is a paid course, to purchase <a href='https://ducisgroup.com/index.php/{{$a}}'>Click Here</a>"
 }

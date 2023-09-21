@@ -65,6 +65,7 @@ export class CoreCourseSummaryPage implements OnInit, OnDestroy {
     dataLoaded = false;
     isModal = false;
     contactsExpanded = false;
+    enrolementtext ='';
 
     courseUrl = '';
     progress?: number;
@@ -124,11 +125,28 @@ export class CoreCourseSummaryPage implements OnInit, OnDestroy {
         const currentSiteUrl = CoreSites.getRequiredCurrentSite().getURL();
         this.enrolUrl = CorePath.concatenatePaths(currentSiteUrl, 'enrol/index.php?id=' + this.courseId);
 		let courseByField = await CoreCourses.getCourseByField('id', this.courseId);
-		if(courseByField.enrollmentmethods.indexOf("license") >= 0)
+        let shortname = '';
+        if(this.course !== undefined)
+        {
+            shortname = (this.course.shortname !== undefined?this.course.shortname :"");
+        }
+
+		if(courseByField.enrollmentmethods.indexOf("license") >= 0 && shortname !='')
 		{
-			 this.enrolUrl = "https://ducisgroup.com/index.php/shop-page-dg/";
+			 this.enrolUrl = "https://ducisgroup.com/index.php/product/"+shortname;
+             shortname= "product/"+shortname;
+             this.enrolementtext = Translate.instant('core.courses.otherenrolments', { $a: shortname});
 		}
+        else
+        {
+            this.enrolUrl = "https://ducisgroup.com/index.php/shop-page-dg/";
+            shortname= "shop-page-dg";
+            this.enrolementtext = Translate.instant('core.courses.otherenrolments', { $a: shortname});
+        }
         this.courseUrl = CorePath.concatenatePaths(currentSiteUrl, 'course/view.php?id=' + this.courseId);
+       
+
+        console.log("******141*********************"+this.enrolementtext );
 
         await this.getCourse();
     }
