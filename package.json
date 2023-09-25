@@ -159,6 +159,7 @@
     "check-es-compat": "1.1.1",
     "compare-versions": "4.1.4",
     "cordova-android": "^11.0.0",
+    "cordova-ios": "^6.3.0",
     "cordova-plugin-intent": "^0.1.2",
     "cross-env": "7.0.3",
     "eslint": "7.25.0",
@@ -198,8 +199,8 @@
   },
   "cordova": {
     "platforms": [
-      "ios",
-      "android"
+      "android",
+      "ios"
     ],
     "plugins": {
       "cordova-plugin-advanced-http": {
